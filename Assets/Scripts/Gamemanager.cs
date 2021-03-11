@@ -15,13 +15,6 @@ public class Gamemanager : MonoBehaviourPunCallbacks
     [SerializeField]
     GameObject PlayerNameHolder;
     public GameObject OwnPlayerObj;
-    public class PlayerInfo
-    {
-        public string name;
-        public int kills;
-        public int deaths;
-    }
-    public List<PlayerInfo> Playerlist = new List<PlayerInfo>();
     // Start is called before the first frame update
     void Start()
     {
@@ -84,24 +77,5 @@ public class Gamemanager : MonoBehaviourPunCallbacks
         print(newPlayer.NickName + " entered the " + PhotonNetwork.CurrentRoom.Name + " player count : " + PhotonNetwork.CurrentRoom.PlayerCount);
         CreatePlayerNameInList(newPlayer.NickName);
     }
-    public void IncrementKillsInPlayerList(string _Name)
-    {
-        for (int i = 0; i < Playerlist.Count; i++)
-        {
-            if (Playerlist[i].name == _Name)
-            {
-                Playerlist[i].kills += 1;
-            }
-        }
-    }
-    public void IncrementDeathsInPlayerList(string _Name)
-    {
-        for (int i = 0; i < Playerlist.Count; i++)
-        {
-            if (Playerlist[i].name == _Name)
-            {
-                Playerlist[i].deaths += 1;
-            }
-        }
-    }
+    
 }
