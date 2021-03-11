@@ -7,6 +7,7 @@ public class BallonCollisionDetection : MonoBehaviourPunCallbacks
 {
     private void OnCollisionEnter(Collision collision)
     {
+        /////////////////////////////////////////////
         if(collision.gameObject.tag == "Player" && !collision.gameObject.GetComponent<PhotonView>().IsMine)
         {
             gameObject.SetActive(false);
