@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420961807302741200}
+  m_GameObject: {fileID: 3447437730344653220}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3a3049eaa9424c4294e062f0a43d33d, type: 3}
@@ -2147,7 +2147,7 @@ Transform:
   m_Children:
   - {fileID: 3963682396392954197}
   - {fileID: 6258125513941211485}
-  - {fileID: 3420961807302741875}
+  - {fileID: 3447437730344653219}
   - {fileID: 3420961809345739967}
   m_Father: {fileID: 1415228909580702970}
   m_RootOrder: 2
@@ -8842,13 +8842,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b530db98ec0ccb49884f22ed26c34a0, type: 3}
---- !u!4 &3420961807302741875 stripped
+--- !u!4 &3447437730344653219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 49100865865096255, guid: 0b530db98ec0ccb49884f22ed26c34a0,
     type: 3}
   m_PrefabInstance: {fileID: 3420961807302741404}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3420961807302741200 stripped
+--- !u!1 &3447437730344653220 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 49100865865096248, guid: 0b530db98ec0ccb49884f22ed26c34a0,
     type: 3}
