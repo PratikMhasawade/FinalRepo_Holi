@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Photon.Pun;
 
 namespace Shubham_Holi.Scripts
 {
-   public class PichkariController : MonoBehaviour
+   public class PichkariController : MonoBehaviourPunCallbacks
    {
       [SerializeField] private Transform pichkariParent;
       [SerializeField] private Transform crosshair;
@@ -15,7 +16,9 @@ namespace Shubham_Holi.Scripts
       [SerializeField] private ParticleSystem impactParticle;
       [SerializeField] private Color trailStartColor;
       [SerializeField] private Color trailEndColor;
-      internal void Shoot()
+
+      [PunRPC]
+      internal void Shoot(string ownername)
       {
           RaycastHit hit;
 
@@ -27,6 +30,8 @@ namespace Shubham_Holi.Scripts
           }
 
           ColorProjectile newProjectile = Instantiate(colorProjectile);
+          newProjectile.OwnerName = ownername;
+          //Debug.LogError("newProjectile.OwnerName : " + newProjectile.OwnerName);
           newProjectile.SetupProjectile(forward.normalized,gunTurret.position,trailStartColor,trailEndColor);
           Destroy(newProjectile.gameObject,2f);
           var mainModule = flowParticleSystem.main;

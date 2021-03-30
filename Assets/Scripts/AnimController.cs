@@ -13,6 +13,7 @@ namespace Shubham_Holi.Scripts
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
         private static readonly int IsShooting = Animator.StringToHash("IsShooting");
         private static readonly int IsMovingBackwards = Animator.StringToHash("IsMovingBackwards");
+        private static readonly int Throw = Animator.StringToHash("Throw");
         private static readonly int X = Animator.StringToHash("X");
         private static readonly int Y = Animator.StringToHash("Y");
 

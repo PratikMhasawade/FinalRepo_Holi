@@ -21,13 +21,21 @@ public class TakeDamage : MonoBehaviour
         HealthBar.fillAmount = health / 100;
     }
     [PunRPC]
-    public void TakingDamage(float _damage)
+    public void TakingDamage(object[] data)
     {
+        float _damage = (float)data[0];
+        string killerName =(string)data[1];
         health -= _damage;
         HealthBar.fillAmount = health / 100;
         if(health == 0 )
         {
-            Die();
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                Die();
+                FindObjectOfType<Gamemanager>().SendData(killerName, "kill");
+                FindObjectOfType<Gamemanager>().SendData(GetComponent<PhotonView>().Owner.NickName, "death");
+            }
+            
         }
         //Debug.Log("health: " + health);
     }
@@ -35,7 +43,7 @@ public class TakeDamage : MonoBehaviour
     public void Die()
     {
         _PlayerScriptObj.Deaths++;
-        _PlayerScriptObj.SetKillsAndDeathText();
+        _PlayerScriptObj.SetDeathText();
         _PlayerScriptObj.IsPlayerDead = true;
         _PlayerScriptObj.PlayerUI.SetActive(false);
         _PlayerScriptObj.CharacterModel.SetActive(false);

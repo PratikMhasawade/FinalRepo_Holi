@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class BallonController : MonoBehaviour
+using Photon.Pun;
+public class BallonController : MonoBehaviourPunCallbacks
 {
     public GameObject BallPrefab;
 
@@ -33,7 +34,7 @@ public class BallonController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Invoke("Shoot", 1f);
+            Invoke("CallThrowBalloon", 1f);
         }
 
 
@@ -45,11 +46,20 @@ public class BallonController : MonoBehaviour
     /// Method for picking up item.
     /// </summary>
     /// <param name="item">Item.</param>
-
-    private void Shoot()
+    private void CallThrowBalloon()
+    {
+        if (photonView.IsMine)
+        {
+            gameObject.GetComponent<PhotonView>().RPC("ThrowBalloon", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.NickName.ToString());
+        }
+        
+    }
+    [PunRPC]
+    private void ThrowBalloon(string _Ownername)
     {
         GameObject temp = Instantiate(BallPrefab, slot.transform.position, slot.transform.rotation);
         temp.transform.SetParent(null);
+        temp.GetComponent<BallonCollisionDetection>().OwnerName = _Ownername;
         //temp.GetComponent<Rigidbody>().isKinematic = false;
         temp.GetComponent<Rigidbody>().velocity = slot.rotation * throwVelocity;
     }

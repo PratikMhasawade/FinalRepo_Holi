@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
-
+using Photon.Pun;
 namespace Shubham_Holi.Scripts
 {
     [RequireComponent(typeof(ParticleSystem))]
     public class ColorProjectile : MonoBehaviour
     {
+        [HideInInspector]public string OwnerName = "";
         private Vector3 direction = Vector3.zero;
         private float moveSpeed = 30f;
        [FormerlySerializedAs("myTrail")] [SerializeField] internal TrailRenderer[] myTrails;
@@ -39,6 +40,21 @@ namespace Shubham_Holi.Scripts
                 transform.Translate(direction.normalized * (Time.deltaTime * moveSpeed));
             }
         }
-        
+        private void OnTriggerEnter(Collider other)
+        {
+            Collider tempColl = other.GetComponent<Collider>();
+            if (tempColl.gameObject.CompareTag("Player")&& tempColl.gameObject.GetComponent<PhotonView>().Owner.NickName != OwnerName && !tempColl.gameObject.GetComponent<PlayerScript>().IsPlayerDead && FindObjectOfType<Gamemanager>().Gamestate == Gamemanager.GamestateEnum.Gameplay)
+            {
+                //Debug.LogError(tempColl.gameObject.GetComponent<PhotonView>().name + " hit.");
+                object[] content = new object[] { 10f, OwnerName};
+                tempColl.gameObject.GetComponent<PhotonView>().RPC("TakingDamage", RpcTarget.AllBuffered,content);
+                //if (tempColl.gameObject.GetComponent<PlayerScript>().IsPlayerDead)
+                //{
+                //    //Debug.LogError(OwnerName + " Killed "+ tempColl.gameObject.GetComponent<PhotonView>().name);
+                //    FindObjectOfType<Gamemanager>().SendData(OwnerName, "kill");
+                //}
+            }
+        }
+
     }
 }

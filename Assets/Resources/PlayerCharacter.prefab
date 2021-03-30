@@ -661,7 +661,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2619968439418820028}
+  m_GameObject: {fileID: 2663192604073953480}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3a3049eaa9424c4294e062f0a43d33d, type: 3}
@@ -736,7 +736,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7441784053302897551}
-  - {fileID: 2619968439418820027}
+  - {fileID: 2663192604073954155}
   m_Father: {fileID: 2672114784302514716}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1340,7 +1340,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCharacterInAnimation: 0
   Crosshair: {fileID: 4957836337302286969}
-  keycodeMove: 119
+  keycodeMoveForward: 0
+  keycodeMoveBack: 0
+  keyboardMoveLeft: 0
+  keyboardMoveRight: 0
   keycodeShoot: 323
   keycodeBalloon: 32
   Deaths: 0
@@ -1351,6 +1354,7 @@ MonoBehaviour:
   KillsText: {fileID: 3308072309525247638}
   DeathsText: {fileID: 204182677048314736}
   moveSpeed: 5
+  Username: 
 --- !u!114 &4029640811969138121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,10 +1381,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pichkariParent: {fileID: 4957836337522672991}
-  pichkariRotateLimit: 20
   crosshair: {fileID: 4957836337302286968}
-  colorTrail: {fileID: 7359416956077889340, guid: 9acf7d1d4643dcf499296282516327e1,
-    type: 3}
+  gunTurret: {fileID: 0}
+  splashFlowAnimation: {fileID: 0}
+  flowParticleSystem: {fileID: 0}
+  colorProjectile: {fileID: 0}
+  impactParticle: {fileID: 0}
+  trailStartColor: {r: 0, g: 0, b: 0, a: 0}
+  trailEndColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &4029640811969138116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1403,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCameraParent: {fileID: 2672114784302514716}
   lookSpeed: 2
-  lookXLimit: 25
+  lookXLimitMin: 60
+  lookXLimitMax: 60
   canMove: 1
 --- !u!114 &4029640811969138119
 MonoBehaviour:
@@ -1409,7 +1418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9ff7eba397cf4e9410987889a4824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 4029640811969138120}
 --- !u!114 &4029640811969138117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4551,13 +4559,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b530db98ec0ccb49884f22ed26c34a0, type: 3}
---- !u!4 &2619968439418820027 stripped
+--- !u!4 &2663192604073954155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 49100865865096255, guid: 0b530db98ec0ccb49884f22ed26c34a0,
     type: 3}
   m_PrefabInstance: {fileID: 2663192604073953668}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2619968439418820028 stripped
+--- !u!1 &2663192604073953480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 49100865865096248, guid: 0b530db98ec0ccb49884f22ed26c34a0,
     type: 3}
